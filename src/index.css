@@ -47,7 +47,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: black;
     background-color: #ffffff;
   }
   a:hover {
@@ -82,4 +82,9 @@ li {
 
 h1 {
   font-size: 32px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

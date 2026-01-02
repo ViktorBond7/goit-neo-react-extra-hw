@@ -1,0 +1,17 @@
+.box {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.link {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.active {
+  color: rgb(24, 127, 127);
+  transform: scale(1.2);
+}
