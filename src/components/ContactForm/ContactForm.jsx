@@ -4,6 +4,7 @@ import css from "./ContactForm.module.css";
 import { useId } from "react";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/contactsOps";
+import { Navigate } from "react-router-dom";
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string()
@@ -16,21 +17,21 @@ const ContactSchema = Yup.object().shape({
     .required("Required"),
 });
 
-const ContactForm = () => {
+const ContactForm = ({
+  initialValues,
+  onSubmit,
+  nameForm,
+  onClose,
+  showClose = false,
+}) => {
   const nameId = useId();
   const numberId = useId();
-  const dispatch = useDispatch();
-
-  const handleSabmit = (value, actions) => {
-    dispatch(addContact(value));
-    actions.resetForm();
-  };
 
   return (
     <div className={css.container}>
       <Formik
-        initialValues={{ name: "", number: "" }}
-        onSubmit={handleSabmit}
+        initialValues={initialValues}
+        onSubmit={onSubmit}
         validationSchema={ContactSchema}
       >
         {({ isSubmitting }) => (
@@ -51,8 +52,18 @@ const ContactForm = () => {
             />
             <ErrorMessage className={css.err} name="number" component="span" />
             <button className={css.btn} type="submit" disabled={isSubmitting}>
-              Add contact
+              {nameForm}
             </button>
+            {showClose && (
+              <button
+                className={css.btn}
+                type="button"
+                disabled={isSubmitting}
+                onClick={onClose}
+              >
+                Exit
+              </button>
+            )}
           </Form>
         )}
       </Formik>

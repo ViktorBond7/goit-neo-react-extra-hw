@@ -9,10 +9,12 @@
 }
 
 .btn {
-  padding: 5px;
+  /* padding: 5px;
   border-radius: 5px;
   background-color: aliceblue;
-  border-color: rgb(90, 91, 92);
+  border-color: rgb(90, 91, 92); */
+  padding: 0;
+  border: none;
 }
 
 .btn:hover {
@@ -22,4 +24,25 @@
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.boxBtn {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 19, 19, 0.9);
+  z-index: 1000;
+  pointer-events: auto;
+}
+.modal {
+  pointer-events: auto;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
 }

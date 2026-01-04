@@ -14,8 +14,6 @@ const schema = yup.object().shape({
 const LoginForm = () => {
   const dispatch = useDispatch();
   const submit = (values, { resetForm }) => {
-    console.log(values);
-
     dispatch(login(values));
     resetForm();
   };

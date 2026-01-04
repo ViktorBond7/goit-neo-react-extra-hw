@@ -46,11 +46,39 @@ export const logout = createAsyncThunk(
     try {
       const { data } = await axios.post("/users/logout");
       clearAuthHeader();
+
+      return data;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const refresh = createAsyncThunk(
+  "auth/refresh",
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const {
+        auth: { token },
+      } = getState();
+      setAuthHeader(token);
+      const { data } = await axios.get("/users/current");
+
       console.log(data);
 
       return data;
     } catch (e) {
       return rejectWithValue(e.message);
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const {
+        auth: { token },
+      } = getState();
+      if (!token) {
+        return false;
+      }
+    },
   }
 );
