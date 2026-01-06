@@ -3,10 +3,3 @@
   flex-direction: column;
   margin-bottom: 20px;
 }
-
-.inputSearch {
-  width: 250px;
-  padding: 5px 10px;
-  line-height: 1.5;
-  border-radius: 5px;
-}

@@ -25,9 +25,6 @@ const initialState = {
 const contactSlice = createSlice({
   name: "contacs",
   initialState,
-  // reducers: {
-  //   logout(state)
-  // }
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, handlePending)

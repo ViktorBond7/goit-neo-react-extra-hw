@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import css from "./SearchBox.module.css";
+import { TextField } from "@mui/material";
 import {
   changeFilter,
   selectNameFilter,
@@ -14,14 +15,23 @@ const SearchBox = () => {
 
   if (!contacts.length) return;
 
+  const handleSearch = (e) => {
+    const valueSearch = e.target.value.trim();
+    dispatch(changeFilter(valueSearch));
+  };
+
   return (
     <div className={css.container}>
       <p className={css.label}>Find contacts by name</p>
-      <input
-        className={css.inputSearch}
+
+      <TextField
+        name="name"
+        sx={{ width: 300 }}
+        fullWidth
         type="text"
         value={value}
-        onChange={(e) => dispatch(changeFilter(e.target.value))}
+        size="small"
+        onChange={handleSearch}
       />
     </div>
   );

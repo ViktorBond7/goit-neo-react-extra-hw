@@ -1,10 +1,11 @@
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import css from "./LoginForm.module.css";
 
 import * as yup from "yup";
-import { Button } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import { login } from "../../redux/auth/operations";
 import { useDispatch } from "react-redux";
+import FormikTextField from "../FormikTextField";
 
 const schema = yup.object().shape({
   email: yup.string().email("Invalid email address").required(),
@@ -27,14 +28,15 @@ const LoginForm = () => {
       >
         {({ isSubmitting }) => (
           <Form className={css.form}>
-            <Field type="text" name="email" />
-            <ErrorMessage className={css.error} name="email" component="div" />
-            <Field type="text" name="password" />
-            <ErrorMessage
-              className={css.error}
-              name="password"
-              component="div"
-            />
+            <Stack spacing={2} sx={{ minWidth: 200 }}>
+              <FormikTextField type="email" name="email" label="Email" />
+              <FormikTextField
+                name="password"
+                label="Password"
+                type="password"
+              />
+            </Stack>
+
             <Button
               type="submit"
               variant="contained"

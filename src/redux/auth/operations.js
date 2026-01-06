@@ -64,8 +64,6 @@ export const refresh = createAsyncThunk(
       setAuthHeader(token);
       const { data } = await axios.get("/users/current");
 
-      console.log(data);
-
       return data;
     } catch (e) {
       return rejectWithValue(e.message);

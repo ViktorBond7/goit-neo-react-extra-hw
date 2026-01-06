@@ -3,11 +3,10 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactList from "../../components/ContactList/ContactList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import { addContact, fetchContacts } from "../../redux/contacts/contactsOps";
-import { useDispatch, useSelector } from "react-redux";
-import { selectContacts } from "../../redux/contacts/contactsSlice";
+import { useDispatch } from "react-redux";
+
 const ContactsPage = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());

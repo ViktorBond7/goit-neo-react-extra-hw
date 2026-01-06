@@ -1,11 +1,12 @@
-import BasicModal from "../../components/ModalWindow/ModalWindow";
+import { RiContactsBook3Line } from "react-icons/ri";
+import css from "./HomePage.module.css";
 
 const HomePage = () => {
   return (
-    <>
-      <p>HomePage</p>
-      <BasicModal />
-    </>
+    <div className={css.box}>
+      <RiContactsBook3Line size={300} color="blue" />
+      <h1>Hello! This is your Contact Book</h1>
+    </div>
   );
 };
 

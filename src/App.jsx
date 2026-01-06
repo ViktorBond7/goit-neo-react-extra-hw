@@ -4,7 +4,6 @@ import { Toaster } from "react-hot-toast";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchContacts } from "./redux/contacts/contactsOps";
 import AppBar from "./components/AppBar/AppBar";
 import { Route, Routes } from "react-router-dom";
 import { refresh } from "./redux/auth/operations";
@@ -22,10 +21,6 @@ const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 function App() {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectorIsRefreshing);
-
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
 
   useEffect(() => {
     dispatch(refresh());

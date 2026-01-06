@@ -3,3 +3,10 @@
   flex-wrap: wrap;
   gap: 10px;
 }
+
+.item {
+  box-shadow: inset 0px 0px 8px #1976d2;
+  border-radius: 5px;
+  flex-basis: calc((100% - 50px) / 6);
+  min-width: 200px;
+}

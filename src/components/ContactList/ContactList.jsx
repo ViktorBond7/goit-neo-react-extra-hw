@@ -19,7 +19,7 @@ const ContactList = () => {
       {isError && <ErrorMessege message={isError} />}
       <ul className={css.list}>
         {filteredContacts.map((contact) => (
-          <li key={contact.id}>
+          <li key={contact.id} className={css.item}>
             <Contact data={contact} />
           </li>
         ))}

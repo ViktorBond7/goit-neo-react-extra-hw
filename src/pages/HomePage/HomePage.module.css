@@ -1,0 +1,13 @@
+.box {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box h1 {
+  font-size: 32px;
+  font-weight: bold;
+  color: dodgerblue;
+}

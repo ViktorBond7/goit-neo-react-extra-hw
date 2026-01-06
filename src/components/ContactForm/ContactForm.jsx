@@ -1,10 +1,8 @@
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
-import { useId } from "react";
-import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/contactsOps";
-import { Navigate } from "react-router-dom";
+import { Button, Stack } from "@mui/material";
+import FormikTextField from "../FormikTextField";
 
 const ContactSchema = Yup.object().shape({
   name: Yup.string()
@@ -24,9 +22,6 @@ const ContactForm = ({
   onClose,
   showClose = false,
 }) => {
-  const nameId = useId();
-  const numberId = useId();
-
   return (
     <div className={css.container}>
       <Formik
@@ -35,35 +30,24 @@ const ContactForm = ({
         validationSchema={ContactSchema}
       >
         {({ isSubmitting }) => (
-          <Form className={css.form}>
-            <label className={css.label} htmlFor={nameId}>
-              Name
-            </label>
-            <Field className={css.input} type="text" name="name" id={nameId} />
-            <ErrorMessage className={css.err} name="name" component="span" />
-            <label className={css.label} htmlFor={numberId}>
-              Number
-            </label>
-            <Field
-              className={css.input}
-              type="text"
-              name="number"
-              id={numberId}
-            />
-            <ErrorMessage className={css.err} name="number" component="span" />
-            <button className={css.btn} type="submit" disabled={isSubmitting}>
-              {nameForm}
-            </button>
-            {showClose && (
-              <button
-                className={css.btn}
-                type="button"
-                disabled={isSubmitting}
-                onClick={onClose}
-              >
-                Exit
-              </button>
-            )}
+          <Form>
+            <Stack spacing={2} sx={{ minWidth: 200 }}>
+              <FormikTextField type="text" name="name" label="Name" />
+              <FormikTextField type="text" name="number" label="Number" />
+              <Button type="submit" variant="contained" disabled={isSubmitting}>
+                {nameForm}
+              </Button>
+              {showClose && (
+                <Button
+                  variant="outlined"
+                  color="error"
+                  disabled={isSubmitting}
+                  onClick={onClose}
+                >
+                  Exit
+                </Button>
+              )}
+            </Stack>
           </Form>
         )}
       </Formik>
