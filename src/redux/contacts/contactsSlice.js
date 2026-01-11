@@ -5,7 +5,7 @@ import {
   editContact,
   fetchContacts,
 } from "./contactsOps";
-import { selectNameFilter } from "../filters/filtersSlice";
+import { selectNameFilter, selectNumberFilter } from "../filters/filtersSlice";
 import { logout } from "../auth/operations";
 
 const handlePending = (state) => {
@@ -68,10 +68,15 @@ export const selectLoading = (state) => state.contacts.loading;
 export const selectError = (state) => state.contacts.error;
 
 export const selectFilteredContacts = createSelector(
-  [selectNameFilter, selectContacts],
-  (filter, contacts) => {
+  [selectNameFilter, selectContacts, selectNumberFilter],
+  (nameFilter, contacts, numberFilter) => {
+    if (numberFilter) {
+      return contacts.filter((contact) =>
+        contact.number.includes(numberFilter)
+      );
+    }
     return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+      contact.name.toLowerCase().includes(nameFilter.toLowerCase())
     );
   }
 );
