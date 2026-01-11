@@ -19,7 +19,6 @@ const Contact = ({ data: { name, number, id } }) => {
   const onCloseModal = () => {
     setIsOpenModal(false);
   };
-
   const handleSabmit = (values) => {
     dispatch(editContact(values));
     setIsEditForm(false);
